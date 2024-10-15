@@ -1,0 +1,60 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3gwpxeqtceqj"]
+
+[ext_resource type="Theme" uid="uid://cr2h37igr6wkn" path="res://assets/themes/basic.theme" id="1_1bhx1"]
+[ext_resource type="Texture2D" uid="uid://b0twr6hrkcode" path="res://icon.svg" id="2_orvao"]
+
+[node name="BoardScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_1bhx1")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.25, 0.25, 0.25, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxGrid" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxGridSettings" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxGrid"]
+layout_mode = 2
+
+[node name="BoardGrid" type="GridContainer" parent="MarginContainer/HBoxContainer/VBoxGrid"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxMenu" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxMenu"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_icons/icon = ExtResource("2_orvao")
+icon_alignment = 1
+expand_icon = true

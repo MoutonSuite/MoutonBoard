@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://vygils74kbr2"
+path="res://.godot/imported/Hyper Light Atk Sfx.mp3-6aa1d6ad5a5285fc9c1cea8875807f19.mp3str"
+
+[deps]
+
+source_file="res://assets/test/sfx/Hyper Light Atk Sfx.mp3"
+dest_files=["res://.godot/imported/Hyper Light Atk Sfx.mp3-6aa1d6ad5a5285fc9c1cea8875807f19.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

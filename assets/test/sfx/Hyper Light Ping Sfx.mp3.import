@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://p30wlfbcykwh"
+path="res://.godot/imported/Hyper Light Ping Sfx.mp3-1c224db1c42dd6eb4e20f2ae9772c153.mp3str"
+
+[deps]
+
+source_file="res://assets/test/sfx/Hyper Light Ping Sfx.mp3"
+dest_files=["res://.godot/imported/Hyper Light Ping Sfx.mp3-1c224db1c42dd6eb4e20f2ae9772c153.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

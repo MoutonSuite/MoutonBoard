@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bnk5vovkljyqm"
+path="res://.godot/imported/Hyper Light Revolver Sfx.mp3-47f572cea671d24746d48b299585a362.mp3str"
+
+[deps]
+
+source_file="res://assets/test/sfx/Hyper Light Revolver Sfx.mp3"
+dest_files=["res://.godot/imported/Hyper Light Revolver Sfx.mp3-47f572cea671d24746d48b299585a362.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
