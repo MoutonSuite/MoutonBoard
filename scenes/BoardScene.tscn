@@ -1,7 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://b3gwpxeqtceqj"]
+[gd_scene load_steps=6 format=3 uid="uid://b3gwpxeqtceqj"]
 
 [ext_resource type="Theme" uid="uid://cr2h37igr6wkn" path="res://assets/themes/basic.theme" id="1_1bhx1"]
-[ext_resource type="Texture2D" uid="uid://b0twr6hrkcode" path="res://icon.svg" id="2_orvao"]
+[ext_resource type="PackedScene" uid="uid://g5thvru25a65" path="res://scenes/ClipButton.tscn" id="2_316yo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rawsx"]
+
+[sub_resource type="Gradient" id="Gradient_aeb2e"]
+interpolation_mode = 2
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_67ubo"]
+gradient = SubResource("Gradient_aeb2e")
 
 [node name="BoardScene" type="Control"]
 layout_mode = 3
@@ -34,27 +43,171 @@ grow_vertical = 2
 [node name="Panel" type="Panel" parent="MarginContainer"]
 layout_mode = 2
 
+[node name="VBoxGrid" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxGridSettings" type="HFlowContainer" parent="MarginContainer/VBoxGrid"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="HBoxColumns" type="HBoxContainer" parent="MarginContainer/VBoxGrid/HBoxGridSettings"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="HBoxVolume" type="HBoxContainer" parent="MarginContainer/VBoxGrid/HBoxGridSettings"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 15
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxGrid/HBoxGridSettings/HBoxVolume"]
+layout_mode = 2
+text = "Volume"
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/VBoxGrid/HBoxGridSettings/HBoxVolume"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+scrollable = false
+
+[node name="SpinBox" type="SpinBox" parent="MarginContainer/VBoxGrid/HBoxGridSettings/HBoxVolume"]
+layout_mode = 2
+suffix = "dB"
+
+[node name="ButtonLoad" type="Button" parent="MarginContainer/VBoxGrid/HBoxGridSettings"]
+layout_mode = 2
+size_flags_vertical = 4
+text = "Load a Soundboard"
+alignment = 0
+
+[node name="ButtonSave" type="Button" parent="MarginContainer/VBoxGrid/HBoxGridSettings"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Save a Soundboard"
+alignment = 0
+
+[node name="ButtonNewClip" type="Button" parent="MarginContainer/VBoxGrid/HBoxGridSettings"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Create a new Clip"
+alignment = 0
+
+[node name="BoardGrid" type="GridContainer" parent="MarginContainer/VBoxGrid"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ClipButton" parent="MarginContainer/VBoxGrid/BoardGrid" instance=ExtResource("2_316yo")]
+layout_mode = 2
+
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+visible = false
 layout_mode = 2
 
-[node name="VBoxGrid" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_rawsx")
 
-[node name="HBoxGridSettings" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxGrid"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+texture = SubResource("GradientTexture1D_67ubo")
 
-[node name="BoardGrid" type="GridContainer" parent="MarginContainer/HBoxContainer/VBoxGrid"]
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/PanelContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VBoxMenu" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="HSeparator2" type="HSeparator" parent="MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Window" type="Window" parent="."]
+title = "Create a new clip"
+initial_position = 1
+size = Vector2i(590, 450)
+transient = true
+exclusive = true
+borderless = true
+always_on_top = true
+popup_window = true
+theme = ExtResource("1_1bhx1")
+
+[node name="MarginContainer" type="MarginContainer" parent="Window"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Window/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Window/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Create a new clip"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Window/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxName" type="HBoxContainer" parent="Window/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Window/MarginContainer/VBoxContainer/HBoxName"]
+layout_mode = 2
+text = "Name"
+
+[node name="LineEdit" type="LineEdit" parent="Window/MarginContainer/VBoxContainer/HBoxName"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "New Clip"
+
+[node name="HBoxColor" type="HBoxContainer" parent="Window/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Window/MarginContainer/VBoxContainer/HBoxColor"]
+layout_mode = 2
+text = "Color"
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Window/MarginContainer/VBoxContainer/HBoxColor"]
+layout_mode = 2
+size_flags_horizontal = 3
+edit_alpha = false
+
+[node name="HSeparator2" type="HSeparator" parent="Window/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxStream" type="VBoxContainer" parent="Window/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxStream" type="HBoxContainer" parent="Window/MarginContainer/VBoxContainer/VBoxStream"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Window/MarginContainer/VBoxContainer/VBoxStream/HBoxStream"]
+layout_mode = 2
+text = "Stream"
+
+[node name="ButtonPickStream" type="Button" parent="Window/MarginContainer/VBoxContainer/VBoxStream/HBoxStream"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxMenu"]
+[node name="HBoxPlayer" type="HBoxContainer" parent="Window/MarginContainer/VBoxContainer/VBoxStream"]
 layout_mode = 2
-size_flags_vertical = 3
-theme_override_icons/icon = ExtResource("2_orvao")
-icon_alignment = 1
-expand_icon = true
+
+[node name="Button" type="Button" parent="Window/MarginContainer/VBoxContainer/VBoxStream/HBoxPlayer"]
+layout_mode = 2
+text = "Play"
+
+[node name="HSeparator3" type="HSeparator" parent="Window/MarginContainer/VBoxContainer"]
+layout_mode = 2

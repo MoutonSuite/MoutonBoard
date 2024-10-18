@@ -1,0 +1,73 @@
+[gd_scene load_steps=10 format=3 uid="uid://g5thvru25a65"]
+
+[ext_resource type="Script" path="res://scripts/UI/ClipButton.gd" id="1_haq27"]
+[ext_resource type="Script" path="res://scripts/logic/Sound.gd" id="2_bkadl"]
+[ext_resource type="Texture2D" uid="uid://b0twr6hrkcode" path="res://icon.svg" id="2_mepfo"]
+[ext_resource type="Texture2D" uid="uid://dwqpui0ebhr35" path="res://assets/test/FinalRes.png" id="2_rvrf4"]
+[ext_resource type="AudioStream" uid="uid://dlgd6234up5b1" path="res://assets/test/sfx/Hyper Light Startup Sfx.mp3" id="4_gqgsd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4flet"]
+
+[sub_resource type="Resource" id="Resource_ybhbf"]
+script = ExtResource("2_bkadl")
+clip_name = "Test Clip 1"
+color = Color(0.178499, 1, 0, 1)
+icon = ExtResource("2_rvrf4")
+stream = ExtResource("4_gqgsd")
+volume = 0.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_78mma"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_62vit"]
+
+[node name="ClipButton" type="PanelContainer"]
+custom_minimum_size = Vector2(5.62, 4.94)
+anchors_preset = -1
+anchor_right = 0.122
+anchor_bottom = 0.123
+offset_right = 1.45599
+offset_bottom = 1.296
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_4flet")
+script = ExtResource("1_haq27")
+clip = SubResource("Resource_ybhbf")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_mepfo")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_78mma")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 10
+text = "New Clip"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_62vit")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+max_polyphony = 4
