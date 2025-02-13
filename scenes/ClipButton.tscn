@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://g5thvru25a65"]
 
 [ext_resource type="Script" path="res://scripts/UI/ClipButton.gd" id="1_haq27"]
-[ext_resource type="Script" path="res://scripts/logic/Sound.gd" id="2_bkadl"]
+[ext_resource type="Script" path="res://scripts/logic/SoundClip.gd" id="2_bkadl"]
 [ext_resource type="Texture2D" uid="uid://b0twr6hrkcode" path="res://icon.svg" id="2_mepfo"]
 [ext_resource type="Texture2D" uid="uid://dwqpui0ebhr35" path="res://assets/test/FinalRes.png" id="2_rvrf4"]
 [ext_resource type="AudioStream" uid="uid://dlgd6234up5b1" path="res://assets/test/sfx/Hyper Light Startup Sfx.mp3" id="4_gqgsd"]

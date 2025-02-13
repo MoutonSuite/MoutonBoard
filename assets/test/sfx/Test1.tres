@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="SoundClip" load_steps=2 format=3 uid="uid://b7wej87j0cs8g"]
 
-[ext_resource type="Script" path="res://scripts/logic/Sound.gd" id="1_fdgbh"]
+[ext_resource type="Script" path="res://scripts/logic/SoundClip.gd" id="1_fdgbh"]
 
 [resource]
 script = ExtResource("1_fdgbh")

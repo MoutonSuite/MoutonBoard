@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bxooplt726t4v"
+path="res://.godot/imported/Hyper Light Ping Sfx.wav-7f158f2b22f7d5a2fd1aeb7e55119905.sample"
+
+[deps]
+
+source_file="res://assets/test/sfx/Hyper Light Ping Sfx.wav"
+dest_files=["res://.godot/imported/Hyper Light Ping Sfx.wav-7f158f2b22f7d5a2fd1aeb7e55119905.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

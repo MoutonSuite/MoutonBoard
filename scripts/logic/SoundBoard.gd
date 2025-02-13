@@ -7,4 +7,4 @@ class_name SoundBoard
 @export var board_name := "New Board"
 
 ## Soundboard name, to avoid using the resource name for easier saving.
-@export var sounds : Array[SoundClip] = []
+@export var clips : Array[SoundClip] = []

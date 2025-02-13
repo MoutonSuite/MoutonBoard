@@ -15,14 +15,30 @@ run/main_scene="res://scenes/BoardScene.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/transparent=true
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/native_dialogs/plugin.cfg")
+
 [file_customization]
 
 folder_colors={
+"res://addons/": "orange",
 "res://assets/": "purple",
 "res://scenes/": "red",
 "res://scripts/": "blue"
 }
 
+[gui]
+
+theme/custom="res://assets/themes/basic.theme"
+theme/custom_font="res://assets/fonts/VCR_OSD_MONO.ttf"
+
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
+viewport/transparent_background=true

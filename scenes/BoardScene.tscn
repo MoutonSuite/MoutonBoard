@@ -1,7 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://b3gwpxeqtceqj"]
+[gd_scene load_steps=8 format=3 uid="uid://b3gwpxeqtceqj"]
 
 [ext_resource type="Theme" uid="uid://cr2h37igr6wkn" path="res://assets/themes/basic.theme" id="1_1bhx1"]
 [ext_resource type="PackedScene" uid="uid://g5thvru25a65" path="res://scenes/ClipButton.tscn" id="2_316yo"]
+[ext_resource type="PackedScene" uid="uid://dcycddyyvw0or" path="res://scenes/EditWindow.tscn" id="3_sqgd0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4oskx"]
+bg_color = Color(0.133333, 0.00392157, 0.203922, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 1, 0.533333, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rawsx"]
 
@@ -23,191 +32,108 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("1_1bhx1")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.25, 0.25, 0.25, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_4oskx")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Panel" type="Panel" parent="MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
 layout_mode = 2
 
-[node name="VBoxGrid" type="VBoxContainer" parent="MarginContainer"]
+[node name="Panel" type="Panel" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxGrid" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HBoxGridSettings" type="HFlowContainer" parent="MarginContainer/VBoxGrid"]
+[node name="HBoxGridSettings" type="HFlowContainer" parent="PanelContainer/MarginContainer/VBoxGrid"]
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="HBoxColumns" type="HBoxContainer" parent="MarginContainer/VBoxGrid/HBoxGridSettings"]
+[node name="HBoxColumns" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxGrid/HBoxGridSettings"]
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="HBoxVolume" type="HBoxContainer" parent="MarginContainer/VBoxGrid/HBoxGridSettings"]
+[node name="HBoxVolume" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxGrid/HBoxGridSettings"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 theme_override_constants/separation = 15
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxGrid/HBoxGridSettings/HBoxVolume"]
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxGrid/HBoxGridSettings/HBoxVolume"]
 layout_mode = 2
 text = "Volume"
 
-[node name="HSlider" type="HSlider" parent="MarginContainer/VBoxGrid/HBoxGridSettings/HBoxVolume"]
+[node name="HSlider" type="HSlider" parent="PanelContainer/MarginContainer/VBoxGrid/HBoxGridSettings/HBoxVolume"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 scrollable = false
 
-[node name="SpinBox" type="SpinBox" parent="MarginContainer/VBoxGrid/HBoxGridSettings/HBoxVolume"]
+[node name="SpinBox" type="SpinBox" parent="PanelContainer/MarginContainer/VBoxGrid/HBoxGridSettings/HBoxVolume"]
 layout_mode = 2
 suffix = "dB"
 
-[node name="ButtonLoad" type="Button" parent="MarginContainer/VBoxGrid/HBoxGridSettings"]
+[node name="ButtonLoad" type="Button" parent="PanelContainer/MarginContainer/VBoxGrid/HBoxGridSettings"]
 layout_mode = 2
 size_flags_vertical = 4
 text = "Load a Soundboard"
 alignment = 0
 
-[node name="ButtonSave" type="Button" parent="MarginContainer/VBoxGrid/HBoxGridSettings"]
+[node name="ButtonSave" type="Button" parent="PanelContainer/MarginContainer/VBoxGrid/HBoxGridSettings"]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Save a Soundboard"
 alignment = 0
 
-[node name="ButtonNewClip" type="Button" parent="MarginContainer/VBoxGrid/HBoxGridSettings"]
+[node name="ButtonNewClip" type="Button" parent="PanelContainer/MarginContainer/VBoxGrid/HBoxGridSettings"]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Create a new Clip"
 alignment = 0
 
-[node name="BoardGrid" type="GridContainer" parent="MarginContainer/VBoxGrid"]
+[node name="BoardGrid" type="GridContainer" parent="PanelContainer/MarginContainer/VBoxGrid"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ClipButton" parent="MarginContainer/VBoxGrid/BoardGrid" instance=ExtResource("2_316yo")]
+[node name="ClipButton" parent="PanelContainer/MarginContainer/VBoxGrid/BoardGrid" instance=ExtResource("2_316yo")]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer"]
 visible = false
 layout_mode = 2
 
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/HBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/separator = SubResource("StyleBoxEmpty_rawsx")
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
 texture = SubResource("GradientTexture1D_67ubo")
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.5
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer/PanelContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="HSeparator2" type="HSeparator" parent="MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="HSeparator2" type="HSeparator" parent="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Window" type="Window" parent="."]
-title = "Create a new clip"
-initial_position = 1
-size = Vector2i(590, 450)
-transient = true
-exclusive = true
-borderless = true
-always_on_top = true
-popup_window = true
-theme = ExtResource("1_1bhx1")
-
-[node name="MarginContainer" type="MarginContainer" parent="Window"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Window/MarginContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Window/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Create a new clip"
-horizontal_alignment = 1
-
-[node name="HSeparator" type="HSeparator" parent="Window/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="HBoxName" type="HBoxContainer" parent="Window/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Window/MarginContainer/VBoxContainer/HBoxName"]
-layout_mode = 2
-text = "Name"
-
-[node name="LineEdit" type="LineEdit" parent="Window/MarginContainer/VBoxContainer/HBoxName"]
-layout_mode = 2
-size_flags_horizontal = 3
-placeholder_text = "New Clip"
-
-[node name="HBoxColor" type="HBoxContainer" parent="Window/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Window/MarginContainer/VBoxContainer/HBoxColor"]
-layout_mode = 2
-text = "Color"
-
-[node name="ColorPickerButton" type="ColorPickerButton" parent="Window/MarginContainer/VBoxContainer/HBoxColor"]
-layout_mode = 2
-size_flags_horizontal = 3
-edit_alpha = false
-
-[node name="HSeparator2" type="HSeparator" parent="Window/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="VBoxStream" type="VBoxContainer" parent="Window/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="HBoxStream" type="HBoxContainer" parent="Window/MarginContainer/VBoxContainer/VBoxStream"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Window/MarginContainer/VBoxContainer/VBoxStream/HBoxStream"]
-layout_mode = 2
-text = "Stream"
-
-[node name="ButtonPickStream" type="Button" parent="Window/MarginContainer/VBoxContainer/VBoxStream/HBoxStream"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="HBoxPlayer" type="HBoxContainer" parent="Window/MarginContainer/VBoxContainer/VBoxStream"]
-layout_mode = 2
-
-[node name="Button" type="Button" parent="Window/MarginContainer/VBoxContainer/VBoxStream/HBoxPlayer"]
-layout_mode = 2
-text = "Play"
-
-[node name="HSeparator3" type="HSeparator" parent="Window/MarginContainer/VBoxContainer"]
-layout_mode = 2
+[node name="Window" parent="." instance=ExtResource("3_sqgd0")]
