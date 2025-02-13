@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://g5thvru25a65"]
+[gd_scene load_steps=9 format=3 uid="uid://g5thvru25a65"]
 
 [ext_resource type="Script" path="res://scripts/UI/ClipButton.gd" id="1_haq27"]
 [ext_resource type="Script" path="res://scripts/logic/SoundClip.gd" id="2_bkadl"]
@@ -42,11 +42,11 @@ clip = SubResource("Resource_ybhbf")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 2
-color = Color(0, 0, 0, 1)
+color = Color(0.178499, 1, 0, 1)
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 2
-texture = ExtResource("2_mepfo")
+texture = ExtResource("2_rvrf4")
 expand_mode = 1
 stretch_mode = 6
 
@@ -63,11 +63,12 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 0
 theme_override_constants/shadow_outline_size = 10
-text = "New Clip"
+text = "Test Clip 1"
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_62vit")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_gqgsd")
 max_polyphony = 4

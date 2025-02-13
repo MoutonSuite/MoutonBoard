@@ -83,29 +83,52 @@ suffix = "dB"
 [node name="ButtonLoad" type="Button" parent="PanelContainer/MarginContainer/VBoxGrid/HBoxGridSettings"]
 layout_mode = 2
 size_flags_vertical = 4
-text = "Load a Soundboard"
+text = "   Load a Soundboard"
 alignment = 0
 
 [node name="ButtonSave" type="Button" parent="PanelContainer/MarginContainer/VBoxGrid/HBoxGridSettings"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Save a Soundboard"
+text = "   Save a Soundboard"
 alignment = 0
 
 [node name="ButtonNewClip" type="Button" parent="PanelContainer/MarginContainer/VBoxGrid/HBoxGridSettings"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Create a new Clip"
+text = "   Create a new Clip"
 alignment = 0
 
-[node name="BoardGrid" type="GridContainer" parent="PanelContainer/MarginContainer/VBoxGrid"]
+[node name="TabContainer" type="TabContainer" parent="MarginContainer/VBoxGrid"]
 layout_mode = 2
 size_flags_vertical = 3
+current_tab = 0
+clip_tabs = false
+tabs_visible = false
 
-[node name="ClipButton" parent="PanelContainer/MarginContainer/VBoxGrid/BoardGrid" instance=ExtResource("2_316yo")]
+[node name="BoardGrid" type="GridContainer" parent="MarginContainer/VBoxGrid/TabContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+metadata/_tab_index = 0
+
+[node name="ClipButton" parent="MarginContainer/VBoxGrid/TabContainer/BoardGrid" instance=ExtResource("2_316yo")]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer"]
+[node name="HBoxTabs" type="HBoxContainer" parent="MarginContainer/VBoxGrid"]
+layout_mode = 2
+
+[node name="TabBar" type="TabBar" parent="MarginContainer/VBoxGrid/HBoxTabs"]
+layout_mode = 2
+size_flags_horizontal = 3
+drag_to_rearrange_enabled = true
+tab_count = 1
+tab_0/title = "Default"
+tab_0/tooltip = "The default tab. Right-click to rename !"
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxGrid/HBoxTabs"]
+layout_mode = 2
+text = "   Add Tab"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 visible = false
 layout_mode = 2
 

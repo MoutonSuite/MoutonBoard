@@ -6,5 +6,5 @@ class_name SoundBoard
 ## Soundboard name, to avoid using the resource name for easier saving.
 @export var board_name := "New Board"
 
-## Soundboard name, to avoid using the resource name for easier saving.
-@export var clips : Array[SoundClip] = []
+## Dictionnary containing tabs of the soundboard, and their respective clips
+@export var clips : Dictionary = {}
