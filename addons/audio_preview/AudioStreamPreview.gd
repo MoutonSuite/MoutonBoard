@@ -8,14 +8,12 @@ signal generation_progress(normalized_progress)
 signal generation_completed
 
 var voice_preview_generator
-var stream : AudioStreamWAV = null
 var stream_length := 0.0
 
-@export_file("*.wav") var stream_path: String:
-	set(new_path):
-		stream_path = new_path
+@export var stream : AudioStreamWAV = null :
+	set(new_stream):
+		stream = new_stream
 		_update_preview()
-
 
 func _ready():
 	voice_preview_generator = preload("res://addons/audio_preview/voice_preview_generator.tscn").instantiate()
@@ -30,14 +28,7 @@ func _ready():
 func _update_preview():
 	if not voice_preview_generator:
 		return
-	
-	if stream_path in ["", "res://", "user://"]:
-		texture = null
-		return
 
-	var file = FileAccess.open(stream_path, FileAccess.READ)
-	stream = AudioStreamWAV.new()
-	stream.data = file.get_buffer(file.get_length())
 	stream_length = stream.get_length() if stream else 0.0
 	voice_preview_generator.generate_preview(stream)
 	emit_signal("generation_started")

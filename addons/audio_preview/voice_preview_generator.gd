@@ -8,8 +8,8 @@ const MAX_FREQUENCY: float = 3000.0 # Maximum frequency captured
 const IMAGE_HEIGHT: int = 64
 
 var image_compression: float = 10.0 # How many samples in one pixel
-var background_color = Color("1B0029")
-var foreground_color = Color("00FF88")
+var background_color = Color.BLACK
+var foreground_color = Color.WHITE
 
 
 
@@ -17,7 +17,7 @@ var foreground_color = Color("00FF88")
 # =============================================================================
 
 
-const SAMPLING_RATE = 2.0*MAX_FREQUENCY
+const SAMPLING_RATE = 4.0*MAX_FREQUENCY
 const IMAGE_HEIGHT_FACTOR: float = float(IMAGE_HEIGHT) / 256.0 # Converts sample raw height to pixel
 const IMAGE_CENTER_Y = int(round(IMAGE_HEIGHT / 2.0))
 

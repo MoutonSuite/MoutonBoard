@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://be2oavridfk8m"]
+
+[ext_resource type="Script" uid="uid://p53eepw0byi4" path="res://scripts/hbox_volume.gd" id="1_1yp6l"]
+
+[node name="HBoxValue" type="HBoxContainer"]
+size_flags_horizontal = 3
+size_flags_vertical = 4
+script = ExtResource("1_1yp6l")
+lower_bound = 0.0
+higher_bound = -12.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Volume"
+
+[node name="HSlider" type="HSlider" parent="."]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = -12.0
+max_value = 10.0
+step = 0.0
+scrollable = false
+
+[node name="SpinBox" type="SpinBox" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.2
+min_value = -12.0
+max_value = 10.0
+step = 0.5
+allow_greater = true
+allow_lesser = true
+suffix = "dB"

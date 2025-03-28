@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dcycddyyvw0or"]
+[gd_scene load_steps=7 format=3 uid="uid://dcycddyyvw0or"]
 
 [ext_resource type="Theme" uid="uid://cr2h37igr6wkn" path="res://assets/themes/basic.theme" id="1_bpq06"]
-[ext_resource type="Script" path="res://scripts/EditWindow.gd" id="2_3pd4j"]
+[ext_resource type="Script" uid="uid://bblmirkmuknb5" path="res://scripts/EditWindow.gd" id="2_3pd4j"]
 [ext_resource type="PackedScene" uid="uid://btu0bvjb0cc6j" path="res://addons/audio_preview/AudioStreamPreview.tscn" id="3_xqp8l"]
+[ext_resource type="PackedScene" uid="uid://be2oavridfk8m" path="res://scenes/HboxVolume.tscn" id="4_0ddxr"]
+[ext_resource type="Texture2D" uid="uid://b0twr6hrkcode" path="res://icon.svg" id="5_trjcq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i22pi"]
 bg_color = Color(0, 0, 0, 1)
@@ -21,7 +23,7 @@ auto_translate_mode = 1
 transparent_bg = true
 title = "Create a new clip"
 initial_position = 2
-size = Vector2i(450, 184)
+size = Vector2i(450, 588)
 wrap_controls = true
 transient = true
 exclusive = true
@@ -95,6 +97,7 @@ text = "Stream"
 [node name="ButtonPickStream" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxStream/HBoxStream"]
 layout_mode = 2
 size_flags_horizontal = 3
+text = "Pick an audio file..."
 
 [node name="NativeFileDialog" type="NativeFileDialog" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxStream/HBoxStream/ButtonPickStream"]
 title = "Open a File"
@@ -117,12 +120,65 @@ max_polyphony = 5
 [node name="HSeparator3" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="HBoxVolume" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="HBoxValue" parent="PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("4_0ddxr")]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxVolume"]
+[node name="HBoxValuePoly" parent="PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("4_0ddxr")]
 layout_mode = 2
-text = "Volume"
+value = 4.0
+text = "Polyphony"
+suffix = ""
+higher_bound = 10.0
 
-[node name="HSlider" type="HSlider" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxVolume"]
+[node name="HSeparator4" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+
+[node name="HBoxLoopMode" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxLoopMode"]
+layout_mode = 2
+text = "Loop Mode"
+
+[node name="MenuButton" type="MenuButton" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxLoopMode"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Select Loop Mode..."
+flat = false
+
+[node name="HSeparator5" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="PanelContainer/MarginContainer/VBoxContainer/CenterContainer"]
+layout_mode = 2
+ratio = 2.0
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/CenterContainer/AspectRatioContainer"]
+layout_mode = 2
+texture = ExtResource("5_trjcq")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/CenterContainer"]
+layout_mode = 2
+text = "Select an image..."
+
+[node name="HSeparator6" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ButtonAccept" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Confirm"
+
+[node name="ButtonDeny" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Delete"

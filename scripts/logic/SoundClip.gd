@@ -23,3 +23,7 @@ class_name SoundClip
 ## Loop mode for the clip, disabled by default. [br]
 ## Uses [enum AudioStreamWAV.LoopMode]
 @export var loop_mode : AudioStreamWAV.LoopMode = AudioStreamWAV.LoopMode.LOOP_DISABLED
+
+## Maximum polyphony of the clip
+## See [AudioStream.max_polyphony]
+@export var polyphony : int = 4
